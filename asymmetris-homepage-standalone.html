@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0c">
+  <meta name="description" content="The sense and action layer for the physical world.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Asymmetris">
+  <meta property="og:title" content="Asymmetris">
+  <meta property="og:description" content="The sense and action layer for the physical world.">
+  <meta property="og:image" content="https://www.asymmetris.com/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMDkwYTBjIi8+PHRleHQgeD0iMzIiIHk9IjQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZjBmMWVlIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDUiIGZvbnQtd2VpZ2h0PSI2MDAiPkE8L3RleHQ+PC9zdmc+Cg==">
+  <style>
+/* Asymmetris stealth site — no tracking, fonts, images or external dependencies */
+:root {
+  color-scheme: dark;
+  --bg: #090a0c;
+  --text: #f0f1ee;
+  --dim: #a3a8ac;
+  --line: #383b3e;
+  --font: "Helvetica Neue", "Arial", "Liberation Sans", sans-serif;
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; -webkit-text-size-adjust: 100%; }
+body { min-height: 100vh; min-height: 100svh; margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); }
+a { color: inherit; }
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
+.skip-link { position: absolute; top: -120px; left: 12px; z-index: 20; padding: 12px 16px; background: #fff; color: #000; }
+.skip-link:focus { top: 12px; }
+.page-shell { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; width: 100%; background: #090a0c; }
+.site-header { padding: clamp(28px, 4.2vw, 62px) clamp(26px, 6.45vw, 118px); }
+.wordmark { font-size: clamp(13px, 1.27vw, 17px); font-weight: 700; letter-spacing: .235em; line-height: 1.2; color: #f5f5f2; user-select: none; }
+.hero { flex: 1; display: flex; align-items: center; padding: 30px clamp(26px, 6.45vw, 118px) clamp(78px, 10vh, 110px); }
+.hero-content { width: 100%; max-width: 1300px; transform: translateY(-2.0vh); }
+.hero h1 { font-weight: 400; letter-spacing: -.064em; line-height: 1.045; font-size: clamp(46px, 6.27vw, 107px); max-width: 1350px; margin: 0; }
+.hero h1 span { display: block; }
+.primary-link { display: inline-flex; align-items: center; gap: 29px; margin-top: clamp(46px, 5.2vw, 76px); padding: 15px 0 16px; border-bottom: 1px solid rgba(245,245,242,.80); font-size: clamp(15px, 1.12vw, 17px); line-height: 1.1; font-weight: 500; letter-spacing: .015em; text-decoration: none; transition: gap .18s ease, border-color .18s ease; }
+.primary-link:hover { gap: 40px; border-bottom-color: #fff; }
+.arrow { font-size: 21px; font-weight: 400; line-height: .9; }
+.contact-dialog { width: min(94vw, 510px); max-height: min(94vh, 790px); padding: 0; border: 1px solid #34383b; background: #121416; color: #f0f1ee; box-shadow: 0 28px 110px #000b; }
+.contact-dialog::backdrop { background: rgba(0,0,0,.77); backdrop-filter: blur(5px); }
+.dialog-inner { position: relative; padding: clamp(26px, 5vw, 48px); }
+.dialog-close { position: absolute; right: 17px; top: 13px; border: 0; color: #e6e7e4; background: none; cursor: pointer; font-size: 30px; font-weight: 300; padding: 6px 10px; }
+.dialog-wordmark { color: #afb2b1; font-size: 11px; letter-spacing: .23em; font-weight: 700; }
+.contact-dialog h2 { margin: 32px 0 26px; font-size: clamp(29px, 5vw, 40px); font-weight: 400; letter-spacing: -.046em; }
+.contact-dialog form { display: flex; flex-direction: column; gap: 9px; }
+.contact-dialog label, .form-page label { font-size: 12px; color: #b6b9b7; margin-top: 10px; letter-spacing: .03em; }
+.optional { color: #85898b; }
+.contact-dialog input, .contact-dialog textarea, .form-page input, .form-page textarea { width: 100%; padding: 13px 14px; border-radius: 0; background: #1d1f21; border: 1px solid #3a3e40; color: #fff; font-size: 15px; outline: none; }
+.contact-dialog input:focus, .contact-dialog textarea:focus, .form-page input:focus, .form-page textarea:focus { border-color: #ddd; }
+.contact-dialog input::placeholder, .contact-dialog textarea::placeholder, .form-page input::placeholder, .form-page textarea::placeholder { color: #777d80; }
+.contact-dialog textarea, .form-page textarea { resize: vertical; min-height: 82px; }
+.submit-button { margin-top: 23px; background: #eee; color: #101113; min-height: 49px; border: 1px solid #eee; padding: 12px 17px; text-align: left; display: flex; align-items: center; justify-content: space-between; cursor: pointer; font-size: 15px; }
+.submit-button:hover { background: #fff; }
+.contact-note { font-size: 11px; line-height: 1.6; color: #8b9092; margin: 24px 0 0; }
+.contact-note a { text-underline-offset: 3px; }
+.honeypot { position: absolute; height: 0; width: 0; overflow: hidden; opacity: 0; pointer-events: none; }
+/* Only the main three elements appear on the landing page. The below are fallback/support routes. */
+.support-page .page-shell { min-height: 100svh; }
+.support-main { flex: 1; padding: clamp(50px, 10vh, 110px) clamp(26px, 6.45vw, 118px) 72px; }
+.support-inner { max-width: 510px; }
+.support-inner h1 { margin: 0 0 24px; font-size: clamp(42px, 5vw, 64px); line-height: 1.05; letter-spacing: -.054em; font-weight: 400; }
+.support-inner p { color: #aab0af; line-height: 1.6; }
+.form-page form { display: flex; flex-direction: column; gap: 9px; margin-top: 24px; }
+.privacy-copy { max-width: 660px; font-size: 15px; }
+.back-link { display: inline-block; color: #fff; margin-top: 30px; text-decoration: none; padding-bottom: 6px; border-bottom: 1px solid #666; }
+@media(max-width: 900px) { 
+  .hero h1 { font-size: clamp(48px, 7.5vw, 72px); line-height: 1.06; }
+}
+@media(max-width: 650px) {
+  .site-header { padding: 31px 27px; }
+  .wordmark { font-size: 12.5px; letter-spacing: .22em; }
+  .hero { align-items: center; padding: 20px 27px 11vh; }
+  .hero-content { transform: translateY(-2vh); }
+  .hero h1 { font-size: clamp(42px, 10.4vw, 65px); letter-spacing: -.064em; line-height: 1.055; }
+  .hero h1 span { display: inline; }
+  .primary-link { margin-top: 52px; font-size: 16px; }
+  .support-main { padding: 65px 27px; }
+}
+@media(max-width: 375px) {
+  .site-header, .hero { padding-left: 23px; padding-right: 23px; }
+  .hero h1 { font-size: clamp(39px, 10.9vw, 46px); }
+}
+@media(max-height: 570px) and (min-width: 651px) {
+  .hero { align-items: flex-start; padding-top: 48px; }
+  .hero-content { transform: none; }
+  .primary-link { margin-top: 36px; }
+}
+@media(prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition-duration: 0s !important; animation-duration: 0s !important; } }
+
+</style>
+  <title>Asymmetris — The sense and action layer for the physical world</title>
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="wordmark" aria-label="Asymmetris">ASYMMETRIS</div>
+    </header>
+    <main id="main" class="hero">
+      <div class="hero-content">
+        <h1>The sense and action layer <span>for the physical world</span></h1>
+        <a class="primary-link" href="/contact.html" data-open-contact>Work with us <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-dialog-title">
+    <div class="dialog-inner">
+      <button class="dialog-close" type="button" data-close-contact aria-label="Close contact form">×</button>
+      <div class="dialog-wordmark">ASYMMETRIS</div>
+      <h2 id="contact-dialog-title">Work with us</h2>
+      <form name="asymmetris-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <input type="hidden" name="form-name" value="asymmetris-inquiry">
+        <p class="honeypot"><label>Leave this field blank <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <label for="inquiry-name">Name</label>
+        <input id="inquiry-name" name="name" type="text" maxlength="120" autocomplete="name" required placeholder="Your name">
+        <label for="inquiry-email">Email</label>
+        <input id="inquiry-email" name="email" type="email" maxlength="160" autocomplete="email" required placeholder="you@company.com">
+        <label for="inquiry-message">Message <span class="optional">(optional)</span></label>
+        <textarea id="inquiry-message" name="message" maxlength="2000" rows="3" placeholder="A brief introduction"></textarea>
+        <button class="submit-button" type="submit">Send inquiry <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="contact-note">Please do not submit sensitive, classified, or controlled information. <a href="/privacy.html">Privacy</a></p>
+    </div>
+  </dialog>
+<script>
+/* Native dialog; CTA still opens /contact.html if scripting is unavailable. */
+(() => {
+  const dialog = document.getElementById('contact-dialog');
+  if (!dialog || typeof dialog.showModal !== 'function') return;
+  document.querySelectorAll('[data-open-contact]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      dialog.showModal();
+      const field = dialog.querySelector('input[name="name"]');
+      if (field) field.focus();
+    });
+  });
+  const closeButton = dialog.querySelector('[data-close-contact]');
+  if (closeButton) closeButton.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+})();
+
+</script>
+</body>
+</html>
